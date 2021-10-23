@@ -42,8 +42,10 @@ const StyledNavBar = styled.header`
   display: flex;
   align-items: center;
   position: fixed;
+  top: 0;
   justify-content: space-between;
   z-index: 10;
+  background-color: white;
 `;
 
 const StyledMenuRoundedIcon = styled(MenuRoundedIcon)`

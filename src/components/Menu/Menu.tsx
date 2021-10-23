@@ -32,6 +32,7 @@ const StyledMenu = styled.aside`
   position: fixed;
   bottom: 0;
   border-right: 4px solid #1876d1;
+  background-color: white;
   @media (max-width: 1024px) {
     width: 100%;
     border-right: 5px solid #1876d1;

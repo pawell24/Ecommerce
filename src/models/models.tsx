@@ -6,7 +6,7 @@ export interface Product {
   category: string;
   image: string;
 }
-export type ProductState = {
+export type RootState = {
   products: Product[];
 };
 

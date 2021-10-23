@@ -1,4 +1,4 @@
-import { ActionProduct, ProductState } from "../models/models";
+import { ActionProduct, RootState } from "../models/models";
 import { ADD_PRODUCTS } from "./constans";
 
 const initialState = {
@@ -6,7 +6,7 @@ const initialState = {
 };
 
 export const productReducer = (
-  state: ProductState = initialState,
+  state: RootState = initialState,
   { type, payload }: ActionProduct
 ) => {
   switch (type) {
