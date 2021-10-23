@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import { Subsite } from "../TopBar/TopBar";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 interface MenuProps {
   subsites: Array<Subsite>;
