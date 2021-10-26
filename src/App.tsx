@@ -6,6 +6,7 @@ import { Requests } from "./api/Requests";
 import ProductGrid from "./components/ProductGrid/ProductGrid";
 import NavBar from "./components/TopBar/TopBar";
 import { addProduct } from "./redux/actionCreators";
+import { Route, Switch } from "react-router";
 
 function App() {
   const dispatch: Function = useDispatch();
@@ -21,10 +22,14 @@ function App() {
     <Router>
       <ThemeProvider theme={{ fontFamily: "sans-serif" }}>
         <GlobalStyle />
-        <div className="App">
-          <NavBar />
-          <ProductGrid />
-        </div>
+        <NavBar />
+        <StyledRouteWrapper>
+          <Switch>
+            <Route path="/shop"></Route>
+            <Route path="/cart"></Route>
+            <Route path="/my-orders"></Route>
+          </Switch>
+        </StyledRouteWrapper>
       </ThemeProvider>
     </Router>
   );
@@ -35,6 +40,9 @@ const GlobalStyle = createGlobalStyle`
    padding: 0;
    box-sizing: border-box;
  }
+`;
+const StyledRouteWrapper = styled.div`
+  padding-top: 10vh;
 `;
 
 export default App;
