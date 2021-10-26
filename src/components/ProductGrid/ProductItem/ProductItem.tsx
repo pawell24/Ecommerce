@@ -1,15 +1,24 @@
+import { Button } from "@mui/material";
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { Product } from "../../../models/models";
+import { addProductToCart } from "../../../redux/actionCreators";
 
-const ProductItem: React.FC<Product> = ({ title, image, price }) => {
+const ProductItem: React.FC<Product> = ({ id, title, image, price }) => {
+  const dispatch = useDispatch();
+  const handleButtonClick = () => {
+    dispatch(addProductToCart({ id, title, price }));
+  };
   return (
     <StyledProductContainer>
       <StyledImg src={image} alt={title} width={150} />
       <div>
-        <h2>{title}</h2>
+        <StyledHeader>{title}</StyledHeader>
         <p>Price:{price}$</p>
-        <a href="/">See more</a>
+        <Button color="secondary" onClick={handleButtonClick}>
+          Buy
+        </Button>
       </div>
     </StyledProductContainer>
   );
@@ -27,10 +36,17 @@ const StyledProductContainer = styled.div`
   align-items: center;
   flex-direction: column;
   max-height: 400px;
+  width: 26%;
 `;
 const StyledImg = styled.img`
   max-height: 200px;
-  width: 150px;
+  min-width: 150px;
+  padding: 10px;
+  margin-bottom: 10px;
+`;
+
+const StyledHeader = styled.h2`
+  font-size: 15px;
 `;
 
 export default ProductItem;

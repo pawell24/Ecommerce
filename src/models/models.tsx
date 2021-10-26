@@ -2,17 +2,18 @@ export interface Product {
   id: number;
   title: string;
   price: number;
-  description: string;
-  category: string;
-  image: string;
+  description?: string;
+  category?: string;
+  image?: string;
 }
-export type RootState = {
+export interface RootState {
   products: Product[];
-};
+  cart: Product[];
+}
 
 export interface ActionProduct {
-  type: string;
-  payload: Array<Product>;
+  type: String;
+  payload: any;
 }
 
 export type DispatchType = (args: ActionProduct) => ActionProduct;

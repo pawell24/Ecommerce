@@ -1,8 +1,9 @@
 import { ActionProduct, RootState } from "../models/models";
-import { ADD_PRODUCTS } from "./constans";
+import { PRODUCT } from "./enum";
 
 const initialState = {
   products: [],
+  cart: [],
 };
 
 export const productReducer = (
@@ -10,9 +11,10 @@ export const productReducer = (
   { type, payload }: ActionProduct
 ) => {
   switch (type) {
-    case ADD_PRODUCTS:
-      return { products: [...payload] };
-
+    case PRODUCT.ADD:
+      return { ...state, products: payload };
+    case PRODUCT.ADD_TO_CART:
+      return { ...state, cart: [...state.cart, payload] };
     default:
       return state;
   }
