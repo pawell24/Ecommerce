@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Requests } from "./api/Requests";
-import ProductGrid from "./components/ProductGrid/ProductGrid";
 import NavBar from "./components/TopBar/TopBar";
 import { addProduct } from "./redux/actionCreators";
 import { Route, Switch } from "react-router";
