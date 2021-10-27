@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Menu from "../Menu/Menu";
+import { NavLink } from "react-router-dom";
 
 export interface Subsite {
   name: string;
@@ -29,6 +31,9 @@ const NavBar: React.FC = () => {
           fontSize="large"
           onClick={setVisibleHandler}
         />
+        <NavLink to="/cart">
+          <StyledShoppingCartIcon color="primary" fontSize="large" />
+        </NavLink>
         {isVisble && <Menu subsites={subSites} />}
       </StyledNavBar>
     </>
@@ -49,6 +54,11 @@ const StyledNavBar = styled.header`
 `;
 
 const StyledMenuRoundedIcon = styled(MenuRoundedIcon)`
+  margin: 0px 20px;
+  cursor: pointer;
+`;
+
+const StyledShoppingCartIcon = styled(ShoppingCartIcon)`
   margin: 0px 20px;
   cursor: pointer;
 `;
