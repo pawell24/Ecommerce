@@ -6,6 +6,8 @@ import { Requests } from "./api/Requests";
 import NavBar from "./components/TopBar/TopBar";
 import { addProduct } from "./redux/actionCreators";
 import { Route, Switch } from "react-router";
+import Products from "./pages/Products";
+import Cart from "./pages/Cart";
 
 function App() {
   const dispatch: Function = useDispatch();
@@ -24,8 +26,12 @@ function App() {
         <NavBar />
         <StyledRouteWrapper>
           <Switch>
-            <Route path="/shop"></Route>
-            <Route path="/cart"></Route>
+            <Route path="/shop">
+              <Products />
+            </Route>
+            <Route path="/cart">
+              <Cart />
+            </Route>
             <Route path="/my-orders"></Route>
           </Switch>
         </StyledRouteWrapper>

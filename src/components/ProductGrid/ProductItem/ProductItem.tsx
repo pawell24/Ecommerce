@@ -1,14 +1,20 @@
 import { Button } from "@mui/material";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { Product } from "../../../models/models";
+import { Product, RootState } from "../../../models/models";
 import { addProductToCart } from "../../../redux/actionCreators";
 
 const ProductItem: React.FC<Product> = ({ id, title, image, price }) => {
   const dispatch = useDispatch();
+  const cart = useSelector((state: RootState) => state.cart);
   const handleButtonClick = () => {
-    dispatch(addProductToCart({ id, title, price }));
+    if (cart.length === 0) dispatch(addProductToCart({ id, title, price }));
+    cart.forEach((cartItem) => {
+      if (cartItem.id !== id) {
+        dispatch(addProductToCart({ id, title, price }));
+      } else alert("You have this product in Cart");
+    });
   };
   return (
     <StyledProductContainer>
