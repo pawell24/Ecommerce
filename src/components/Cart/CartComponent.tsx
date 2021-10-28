@@ -1,10 +1,18 @@
+import { Button } from "@mui/material";
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { RootState } from "../../models/models";
+import { removeProductFromCart } from "../../redux/actionCreators";
+import CartProduct from "./CartProduct";
 
 const CartComponent: React.FC = () => {
   const cart = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch();
+
+  // const handleButtonRemove = () => {
+  //   dispatch(removeProductFromCart(id));
+  // };
 
   return (
     <div>
@@ -13,27 +21,20 @@ const CartComponent: React.FC = () => {
       </header>
       <StyledSection>
         {cart.length > 0 ? (
-          cart.map((item) => (
-            <StyledCartItem>
-              <h2>{item.title}</h2>
-              <p>{item.price}$</p>
-            </StyledCartItem>
-          ))
+          cart.map((item) => <CartProduct {...item} />)
         ) : (
-          <StyledParagraph>Cart is Empty</StyledParagraph>
+          <StyledHeader>Cart is empty</StyledHeader>
         )}
       </StyledSection>
     </div>
   );
 };
-
 const StyledHeader = styled.h2`
   font-family: sans-serif;
   text-align: center;
   font-size: 40px;
   margin-top: 20px;
 `;
-
 const StyledSection = styled.section`
   width: 50vw;
   height: auto;
@@ -41,16 +42,4 @@ const StyledSection = styled.section`
   border: 2px solid #4467fc;
 `;
 
-const StyledCartItem = styled.div`
-  font-family: sans-serif;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-`;
-
-const StyledParagraph = styled.h2`
-  text-align: center;
-  font-family: sans-serif;
-  padding: 10px;
-`;
 export default CartComponent;
