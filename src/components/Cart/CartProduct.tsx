@@ -1,15 +1,21 @@
 import { Button } from "@mui/material";
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { Product } from "../../models/models";
+import { removeProductFromCart } from "../../redux/actionCreators";
 
-const CartProduct: React.FC<Product> = ({ title, price }) => {
+const CartProduct: React.FC<Product> = ({ id, title, price }) => {
+  const dispatch = useDispatch();
+  const handleButtonRemove = () => {
+    dispatch(removeProductFromCart(id));
+  };
   return (
     <>
       <StyledCartItem>
         <StyledParagraph>{title}</StyledParagraph>
         <StyledParagraph>{price}$</StyledParagraph>
-        <Button>Remove</Button>
+        <Button onClick={handleButtonRemove}>Remove</Button>
       </StyledCartItem>
     </>
   );

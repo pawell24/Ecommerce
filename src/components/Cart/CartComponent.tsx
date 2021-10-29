@@ -1,18 +1,11 @@
-import { Button } from "@mui/material";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { RootState } from "../../models/models";
-import { removeProductFromCart } from "../../redux/actionCreators";
 import CartProduct from "./CartProduct";
 
 const CartComponent: React.FC = () => {
   const cart = useSelector((state: RootState) => state.cart);
-  const dispatch = useDispatch();
-
-  // const handleButtonRemove = () => {
-  //   dispatch(removeProductFromCart(id));
-  // };
 
   return (
     <div>
@@ -33,7 +26,7 @@ const StyledHeader = styled.h2`
   font-family: sans-serif;
   text-align: center;
   font-size: 40px;
-  margin-top: 20px;
+  margin: 20px;
 `;
 const StyledSection = styled.section`
   width: 50vw;
