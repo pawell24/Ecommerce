@@ -16,3 +16,11 @@ export function addProductToCart(product: Product) {
   };
   return action;
 }
+
+export function removeProductFromCart(id: number) {
+  const action: ActionProduct = {
+    type: PRODUCT.REMOVE_FROM_CART,
+    payload: id,
+  };
+  return action;
+}
