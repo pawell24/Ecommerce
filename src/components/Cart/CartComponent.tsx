@@ -19,6 +19,7 @@ const CartComponent: React.FC = () => {
           <StyledHeader>Cart is empty</StyledHeader>
         )}
       </StyledSection>
+      <StyledButton>Proceed to Checkout</StyledButton>
     </div>
   );
 };
@@ -33,6 +34,15 @@ const StyledSection = styled.section`
   height: auto;
   margin: 20px auto;
   border: 2px solid #4467fc;
+`;
+
+const StyledButton = styled.button`
+  padding: 12px;
+  color: white;
+  border: none;
+  background-color: #182ac3;
+  cursor: pointer;
+  margin-left: 75%;
 `;
 
 export default CartComponent;

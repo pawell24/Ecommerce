@@ -5,7 +5,7 @@ import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import { Requests } from "./api/Requests";
 import NavBar from "./components/TopBar/TopBar";
 import { addProduct } from "./redux/actionCreators";
-import { Route, Switch } from "react-router";
+import { Redirect, Route, Switch } from "react-router";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 
@@ -26,6 +26,9 @@ function App() {
         <NavBar />
         <StyledRouteWrapper>
           <Switch>
+            <Route path="/" exact>
+              <Redirect to="/shop" />
+            </Route>
             <Route path="/shop">
               <Products />
             </Route>
@@ -47,7 +50,7 @@ const GlobalStyle = createGlobalStyle`
  }
 `;
 const StyledRouteWrapper = styled.div`
-  padding-top: 10vh;
+  padding-top: 1vh;
 `;
 
 export default App;
